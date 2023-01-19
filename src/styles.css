@@ -1,0 +1,20 @@
+/* You can add global styles to this file, and also import other style files */
+:root {
+  --main: #6457E5;
+  --primary-color-rgb: 99, 86, 229;
+}
+
+*{
+  box-sizing: border-box;
+  /* transition: all 1s ease-out;
+  transform: translate(0); */
+  text-transform: capitalize;
+  /* transition:all .2s linear;
+  transition:width none; */
+
+}
+a::selection {
+  background: var(--main);
+  color: #fff;
+
+}
