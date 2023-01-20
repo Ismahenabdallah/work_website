@@ -1,0 +1,102 @@
+<div class="container">
+  <!-- Outer Row -->
+  <div class="row justify-content-center">
+    <div class="col-xxl-12 col-lg-12 col-md-9">
+      <div class="card o-hidden border-0 shadow-lg my-5">
+        <div class="card-body p-0">
+          <!-- Nested Row within Card Body -->
+
+          <div class="row">
+            <div class="img col-lg-6 d-none d-lg-block bg-login-image">
+              <h2>
+                <i class="fa fa-code" aria-hidden="true"></i>
+                work
+              </h2>
+              <img src="assets/img/register.png" />
+            </div>
+            <div class="form col-lg-6">
+              <div class="p-5">
+                <div class="text-center">
+                  <h2 style="  color: white">Bienvenus</h2>
+                  <p style=" font-size: larger; color: white">Inscrivez-vous pour accéder à toutes les fonctionnalités</p>
+                </div>
+                <form #f="ngForm">
+                  <div class="form-group">
+
+                  <label for="Prénom">Prénom</label>
+                    <input
+                      type="text"
+                      class="form-control form-control-user"
+                      id="exampleInputEmail"
+                      aria-describedby="emailHelp"
+                      placeholder="Prénom"
+                      name="prenom"
+                      #prenom="ngModel"
+                      ngModel
+                    />
+                  </div>
+
+
+                  <div class="form-group">
+                    <label for="Nom de famille">Nom de famille</label>
+                    <input
+                      type="text"
+                      class="form-control form-control-user"
+                      id="exampleInputEmail"
+                      aria-describedby="emailHelp"
+                      placeholder="Nom de famille"
+                      name="nom_de_famille"
+                      #nom_de_famille="ngModel"
+                      ngModel
+                    />
+                  </div>
+
+                  <div class="form-group">
+                    <label for="email">email</label>
+                    <input
+                      type="email"
+                      class="form-control form-control-user"
+                      id="exampleInputEmail"
+                      aria-describedby="emailHelp"
+                      placeholder="E-mail"
+                      name="email"
+                      #email="ngModel"
+                      ngModel
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="Mot de passe">Mot de passe</label>
+                    <input
+                      type="password"
+                      class="form-control form-control-user"
+                      id="exampleInputPassword"
+                      placeholder="Mot de passe"
+                      name="password"
+                      #password="ngModel"
+                      ngModel
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="Confirmation du mot de passe">Confirmation du mot de passe</label>
+                    <input
+                      type="password"
+                      class="form-control form-control-user"
+                      id="exampleInputPassword"
+                      placeholder="Confirmation du mot de passe"
+                      name="confirm"
+                      #confrim="ngModel"
+                      ngModel
+                    />
+                  </div>
+
+                <button class="btn">S'inscrire</button>
+                <p style="color: white; margin: 3% 0%; font-size: larger;">Vous êtes déjà membre ?  <a style="text-decoration: underline;" href="/login">Se connecter</a></p>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,56 @@
+.nav1-1{
+  margin-right:55%;
+}
+h2{
+  font-size: xxx-large;
+  margin-right:15%;
+
+}
+.navbar-collapse  li a {
+  text-transform: uppercase;
+  color: #3e3e3e !important;
+  font-weight: 600;
+
+}
+.navbar-collapse .display{
+  display:none !important;
+}
+.nav1-1 , a{
+  color:gray !important;
+}
+
+.navbar{
+  background-color:#fff;
+
+
+
+}
+
+@media (max-width:992px) {
+  .navbar-collapse .display{
+    display:block !important;
+  }
+
+}
+@media (max-width:1060px) {
+  .nav-1{
+    display:none !important;
+  }
+
+}
+.hidden {
+
+  display:none !important
+ }
+.fixed{
+  position:fixed !important;
+  background-color:#fff !important;
+
+  //box-shadow:0 .5rem 1rem rgba(0,0,0,.1);
+  top:0; left:0; right:0;
+   z-index: 1000;
+
+}
+
+
+
