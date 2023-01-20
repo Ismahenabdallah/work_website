@@ -1,0 +1,19 @@
+.categories{
+  display:grid;
+
+  grid-template-columns:25% 25%;
+  /* gap:5px; */
+  margin:5%;
+  grid-column-gap: 5px;
+  grid-row-gap: 5px;
+
+
+
+}
+.re{
+  margin:5%;
+  /* overflow-x: hidden; */
+}
+button{
+ width:100%;
+}

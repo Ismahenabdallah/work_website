@@ -1,10 +1,20 @@
 /* You can add global styles to this file, and also import other style files */
 :root {
-  --main: #6457E5;
+  --main: #Aa24a5;
   --primary-color-rgb: 99, 86, 229;
+}
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
+
+
+
+body {
+    position: relative;
+    font-family: 'Roboto', sans-serif;
 }
 
 *{
+
+
   box-sizing: border-box;
   /* transition: all 1s ease-out;
   transform: translate(0); */

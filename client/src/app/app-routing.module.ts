@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
+import { PuplierComponent } from './layouts/puplier/puplier.component';
 import { RechercheComponent } from './layouts/recherche/recherche.component';
 
 const routes: Routes = [
@@ -10,7 +11,10 @@ const routes: Routes = [
   {path:"register", component:RegisterComponent},
   {path:"home", component:HomeComponent},
   {path:"", component:HomeComponent},
-  {path:"recherche", component:RechercheComponent}
+  {path:"recherche", component:RechercheComponent , children:[
+    {path:"categories" , loadChildren:()=>import('./views/recherche/categories/categories.module').then(m=>m.CategoriesModule)}
+  ]},
+  {path:"puplier", component:PuplierComponent}
 
 
 ];

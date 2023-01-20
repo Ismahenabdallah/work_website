@@ -5,12 +5,15 @@ import { PuplierComponent } from './puplier/puplier.component';
 import { RouterModule } from '@angular/router';
 import { NgxPaginationModule } from 'ngx-pagination';
 
+import { SidenavbarComponent } from '../components/sidenavbar/sidenavbar.component';
+
 
 
 @NgModule({
   declarations: [
     RechercheComponent,
     PuplierComponent,
+    SidenavbarComponent
 
 
   ],

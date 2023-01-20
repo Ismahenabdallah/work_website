@@ -12,6 +12,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { ScrollToTopComponent } from './components/scrollToTop/scrollToTop.component';
 import { FormsModule , ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+
 @NgModule({
   declarations: [
     AppComponent,
