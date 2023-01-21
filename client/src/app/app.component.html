@@ -1,5 +1,8 @@
 
-<div *ngIf="(currentRoute!=='/login')&&(currentRoute!=='/register')&&(currentRoute!=='/puplier')">
+<div *ngIf="(currentRoute!=='/login')&&(currentRoute!=='/register')
+&&(currentRoute!=='/puplier/dash')&&(currentRoute !=='/?returnUrl')
+&&(currentRoute!=='/puplier') &&(currentRoute!=='/recherche')
+">
   <app-navbar ></app-navbar>
 </div>
 

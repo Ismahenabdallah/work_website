@@ -20,7 +20,7 @@
                   <h2 style="  color: white">Bienvenus</h2>
                   <p style=" font-size: larger; color: white">Inscrivez-vous pour accéder à toutes les fonctionnalités</p>
                 </div>
-                <form #f="ngForm">
+                <form #f="ngForm" (ngSubmit)="register(f)">
                   <div class="form-group">
 
                   <label for="Prénom">Prénom</label>
@@ -45,8 +45,8 @@
                       id="exampleInputEmail"
                       aria-describedby="emailHelp"
                       placeholder="Nom de famille"
-                      name="nom_de_famille"
-                      #nom_de_famille="ngModel"
+                      name="nom"
+                      #nom="ngModel"
                       ngModel
                     />
                   </div>
@@ -71,8 +71,8 @@
                       class="form-control form-control-user"
                       id="exampleInputPassword"
                       placeholder="Mot de passe"
-                      name="password"
-                      #password="ngModel"
+                      name="mot_de_passe"
+                      #mot_de_passe="ngModel"
                       ngModel
                     />
                   </div>

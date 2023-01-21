@@ -5,7 +5,8 @@ import { PuplierComponent } from './puplier/puplier.component';
 import { RouterModule } from '@angular/router';
 import { NgxPaginationModule } from 'ngx-pagination';
 
-import { SidenavbarComponent } from '../components/sidenavbar/sidenavbar.component';
+import { BodyComponent } from '../components/body/body.component';
+import { SidenavComponent } from '../components/sidenav/sidenav.component';
 
 
 
@@ -13,7 +14,8 @@ import { SidenavbarComponent } from '../components/sidenavbar/sidenavbar.compone
   declarations: [
     RechercheComponent,
     PuplierComponent,
-    SidenavbarComponent
+    SidenavComponent,
+    BodyComponent
 
 
   ],

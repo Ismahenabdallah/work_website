@@ -1,5 +1,6 @@
 import { Component,  Inject, HostListener } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
+import { AuthserviceService } from 'src/app/services/authservice.service';
 
 @Component({
   selector: 'app-navbar',
@@ -9,7 +10,13 @@ import { DOCUMENT } from '@angular/common';
 export class NavbarComponent {
 
   windowScrolled: boolean=false;
-  constructor(@Inject(DOCUMENT) private document: Document) {}
+  name=''
+  prenom=''
+  constructor(@Inject(DOCUMENT) private document: Document ,public share:AuthserviceService) {
+    this.name=this.share.name
+    this.prenom=this.share.prenom
+  }
+
   @HostListener("window:scroll", [])
   onWindowScroll() {
       if (window.pageYOffset || this.document.documentElement.scrollTop || this.document.body.scrollTop > 100) {

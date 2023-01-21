@@ -10,4 +10,5 @@ export class ServicesService {
   getAllPosts() {
     return this.http.get(endpoint);
   }
+
 }

@@ -1,0 +1,64 @@
+
+
+<nav  class="navbar navbar-expand-lg navbar-white  bg-white p-4">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#" style="margin-left: 60%;"></a>
+    <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button> -->
+    <div class="" id="navbarNav">
+      <ul class="navbar-nav" style="text-align: center;">
+
+        <li class="nav-item" >
+          <a class="nav-link" href="/puplier/puplier">
+            <i class="fa fa-edit" aria-hidden="true"></i>
+            Publier un emploi
+          </a>
+        </li>
+
+
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+
+
+
+
+<div class="sidenav" [ngClass]="collapsed ? 'sidenav-collapsed': ''">
+    <div class="logo-container">
+        <button class="logo" (click)="toggleCollapse()"><i class="fa fa-code" aria-hidden="true"></i></button>
+        <div class="logo-text"  *ngIf="collapsed">Angular</div>
+        <button class="btn-close"  *ngIf="collapsed" (click)="closeSidenav()">
+            <i class="fal fa-times close-icon"></i>
+        </button>
+    </div>
+    <ul class="sidenav-nav">
+        <li class="sidenav-nav-item">
+            <a class="sidenav-nav-link" routerLink="/publier/dash"
+                routerLinkActive="active"
+                [routerLinkActiveOptions]="{exact: true}"
+            >
+            <i class="fa fa-home sidenav-link-icon" aria-hidden="true"></i>
+
+                <span class="sidenav-link-text"  *ngIf="collapsed" >
+                    tableau de bord
+                </span>
+            </a>
+        </li>
+        <li class="sidenav-nav-item">
+          <a class="sidenav-nav-link" routerLink="/publier/emploi"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{exact: true}"
+          >
+          <i class="fa fa-briefcase sidenav-link-icon" aria-hidden="true"></i>
+
+              <span class="sidenav-link-text"  *ngIf="collapsed">
+                  Emploi
+              </span>
+          </a>
+      </li>
+    </ul>
+</div>

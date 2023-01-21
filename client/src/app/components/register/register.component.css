@@ -8,6 +8,10 @@
 .container{
   text-transform: capitalize;
 
+
+}
+input{
+  text-transform: none !important;
 }
 img{
   width:60vh;

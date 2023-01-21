@@ -1,5 +1,6 @@
 <div>
-  <ul [ngClass]="{'hidden': windowScrolled}" class="nav nav-1 d-flex justify-content-between bg-light">
+
+  <ul  [ngClass]="{'hidden': windowScrolled}" class="nav nav-1 d-flex justify-content-between bg-light">
     <div class="d-flex nav1-1">
       <li class="nav-item">
         <a class="nav-link active" href="#">
@@ -11,6 +12,7 @@
 
       <li class="nav-item">
         <a class="nav-link active" href="#">
+
           <i class="fa fa-facebook-official" aria-hidden="true" style="color:black"></i>
         </a>
       </li>
@@ -20,7 +22,7 @@
         </a>
       </li>
     </div>
-    <div class="d-flex">
+    <div class="d-flex" *ngIf="share.LoggedIn()==false">
       <li class="nav-item">
         <a class="nav-link active"  href="/login">
           <i class="fa fa-user" aria-hidden="true" style="color:gainsboro"></i>
@@ -66,12 +68,22 @@
                recherche un emploi </a>
           </li>
           <li class="nav-item" >
-              <a class="nav-link" href="/puplier">
+              <a class="nav-link" href="/puplier/dash">
 
                 <i class="fa fa-list-alt" aria-hidden="true"  style="color:gainsboro;"></i>
                 publier un offre d'emploi
               </a>
           </li>
+
+          <li class=" nav-item  dropdown">
+            <a class="dropbtn nav-link">Dropdown</a>
+            <div class="dropdown-content">
+              <a href="#">Link 1</a>
+              <a href="#">Link 2</a>
+              <a href="#">Link 3</a>
+            </div>
+          </li>
+
          <div class="d-flex display">
           <li class="nav-item">
             <a class="nav-link active" href="#">
