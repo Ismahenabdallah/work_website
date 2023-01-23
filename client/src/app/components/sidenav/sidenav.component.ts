@@ -1,5 +1,7 @@
 import { animate, keyframes, style, transition, trigger } from '@angular/animations';
 import { Component, Output, EventEmitter, OnInit, HostListener } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthserviceService } from 'src/app/services/authservice.service';
 import { navbarData } from './nav-data';
 
 interface SideNavToggle {
@@ -39,6 +41,20 @@ interface SideNavToggle {
   ]
 })
 export class SidenavComponent implements OnInit {
+  name=''
+  prenom=''
+  img=""
+  email=""
+
+  constructor(public share:AuthserviceService , private r :Router ) {
+    this.share.getProfile()
+    this.name=this.share.getProfile().nom
+    this.prenom=this.share.getProfile().prenom
+    this.email=this.share.getProfile().email
+    this.img=this.email.slice(0, 1)
+    console.log(this.share.getProfile().nom)
+
+  }
 
   @Output() onToggleSideNav: EventEmitter<SideNavToggle> = new EventEmitter();
   collapsed = false;
@@ -66,5 +82,9 @@ export class SidenavComponent implements OnInit {
   closeSidenav(): void {
     this.collapsed = false;
     this.onToggleSideNav.emit({collapsed: this.collapsed, screenWidth: this.screenWidth});
+  }
+  logout(){
+    localStorage.removeItem('token')
+    this.r.navigate(['/login'])
   }
 }
