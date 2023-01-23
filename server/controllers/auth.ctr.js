@@ -55,7 +55,7 @@ const Login = asynHandler(async (req, res) => {
                 }else{
                     var token = jwt.sign({ 
                         _id: user._id,
-                        nom: user.non,
+                       
                         email: user.email,
                         nom:user.nom,
                         prenom:user.prenom,
@@ -63,7 +63,8 @@ const Login = asynHandler(async (req, res) => {
                         telephone:user.telephone,
                         objectif:user.objectif,
                         cv:user.cv,
-                       
+                        adresse:user.adresse
+                        
                        
                        }, process.env.PRIVATE_KEY,  { expiresIn: '1h' });
                        res.status(200).json({

@@ -14,12 +14,15 @@ export class AuthserviceService {
   profil = {
     _id: '',
     email: '',
-    status: '',
-    isAdmin: '',
-    worksAt: '',
-    livesIn: '',
-    relationship: '',
-    role:""
+    nom:"",
+    prenom:"",
+    photo: '',
+    telephone: '',
+    objectif: '',
+    cv: '',
+    numbre_apply:[],
+    status:"",
+    adresse:""
   };
   constructor(
     private http: HttpClient,
@@ -32,7 +35,7 @@ export class AuthserviceService {
     return this.http.post(`${this.url}/login`, data);
   }
   saveData(token: any) {
-    //  let decodeToken= this.helper.decodeToken(token)
+
 
     localStorage.setItem('token', token);
   }
@@ -42,21 +45,21 @@ export class AuthserviceService {
     let decodeToken = this.helper.decodeToken(token);
     this.profil._id = decodeToken._id;
     this.profil.email = decodeToken.email;
+    this.profil.nom = decodeToken.nom;
+    this.profil.prenom = decodeToken.prenom;
+    this.profil.cv = decodeToken.cv;
+    this.profil.numbre_apply = decodeToken.numbre_apply;
+    this.profil.objectif = decodeToken.objectif;
+    this.profil.photo = decodeToken.photo;
+    this.profil.telephone = decodeToken.telephone;
     this.profil.status = decodeToken.status;
-
+    this.profil.adresse = decodeToken.adresse;
+    //console.log(decodeToken)
 
     return this.profil;
   }
-  name=''
-  prenom=""
-  getName(){
-    let token: any = localStorage.getItem('token');
-    let decodeToken = this.helper.decodeToken(token);
-    this.name=decodeToken.nom
-     this.prenom=decodeToken.prenom
 
-    return this.name , this.prenom
-  }
+
 
 
   verifStatus(){
@@ -75,9 +78,6 @@ export class AuthserviceService {
 
   LoggedIn(){
     let token:any=localStorage.getItem('token')
-
-
-
     if(!token){
      return false
     }

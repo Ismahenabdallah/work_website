@@ -3,7 +3,7 @@
   <ul  [ngClass]="{'hidden': windowScrolled}" class="nav nav-1 d-flex justify-content-between bg-light">
     <div class="d-flex nav1-1">
       <li class="nav-item">
-        <a class="nav-link active" href="#">
+        <a class="nav-link active" routerLink="#">
 
 
           Tunisie: (+216) 55968917</a
@@ -11,27 +11,27 @@
       </li>
 
       <li class="nav-item">
-        <a class="nav-link active" href="#">
+        <a class="nav-link active" routerLink="#">
 
           <i class="fa fa-facebook-official" aria-hidden="true" style="color:black"></i>
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link active" href="#">
+        <a class="nav-link active" routerLink="#">
           <i class="fa fa-linkedin-square" aria-hidden="true" style="color:black"></i>
         </a>
       </li>
     </div>
     <div class="d-flex" *ngIf="share.LoggedIn()==false">
       <li class="nav-item">
-        <a class="nav-link active"  href="/login">
+        <a class="nav-link active"  routerLink="/login">
           <i class="fa fa-user" aria-hidden="true" style="color:gainsboro"></i>
 
           Se connecter</a
         >
       </li>
       <li class="nav-item" >
-        <a class="nav-link active" href="/register">
+        <a class="nav-link active" routerLink="/register">
           <i class="fa fa-lock" aria-hidden="true" style="color:gainsboro "></i>
           s'inscrire
         </a>
@@ -46,7 +46,7 @@
 
         <i class="fa fa-code" aria-hidden="true" style="color:var(--main)"></i>
 
-       <a style="color: var(--main) !important ; text-decoration: none !important;" href="/home"> Work</a></h2>
+       <a style="color: var(--main) !important ; text-decoration: none !important;" routerLink="/home"> Work</a></h2>
       <button
         class="navbar-toggler"
         type="button"
@@ -63,37 +63,40 @@
 
 
           <li class="nav-item"   >
-            <a class="nav-link" href="/recherche/categories">
+            <a class="nav-link" routerLink="/recherche/categories">
               <i class="fa fa-search" aria-hidden="true" style="color:gainsboro;"></i>
                recherche un emploi </a>
           </li>
           <li class="nav-item" >
-              <a class="nav-link" href="/puplier/dash">
+              <a class="nav-link" routerLink="/publier/dash">
 
                 <i class="fa fa-list-alt" aria-hidden="true"  style="color:gainsboro;"></i>
                 publier un offre d'emploi
               </a>
           </li>
 
-          <li class=" nav-item  dropdown">
-            <a class="dropbtn nav-link">Dropdown</a>
+          <li class=" nav-item  dropdown" style="text-transform: none; display: flex;   " *ngIf="share.LoggedIn()==true">
+            <h3 class="name">{{img}}</h3>
+            <a class="dropbtn nav-link" style="text-transform: none !important ;  margin-left: 1rem !important; " >
+
+              {{name}}-{{prenom}}</a>
             <div class="dropdown-content">
-              <a href="#">Link 1</a>
-              <a href="#">Link 2</a>
-              <a href="#">Link 3</a>
+              <a routerLink="/profil">My Profil</a>
+
+              <a routerLink="/login" (click)="logout()">logout</a>
             </div>
           </li>
 
-         <div class="d-flex display">
+         <div class="d-flex display" *ngIf="share.LoggedIn()==false">
           <li class="nav-item">
-            <a class="nav-link active" href="#">
+            <a class="nav-link active" routerLink="#">
               <i class="fa fa-user" aria-hidden="true" style="color:gainsboro"></i>
 
               Se connecter</a
             >
           </li>
           <li class="nav-item">
-            <a class="nav-link active" href="#">
+            <a class="nav-link active" routerLink="#">
               <i class="fa fa-lock" aria-hidden="true" style="color:gainsboro "></i>
               s'inscrire
             </a>

@@ -12,12 +12,19 @@ dotenv.config()
 
 var usersRouter = require('./routes/user.route');
 var auth = require('./routes/auth.router')
+var job=require('./routes/job.router')
 var mongoose = require('mongoose')
 var app = express();
 //app.set('veiw engine', 'ejs')
 mongoose.set('strictQuery', true);
 const PORT =process.env.PORT||5000;
 app.use(cors())
+// app.use((req, res, next) => {
+//   res.header("Access-Control-Allow-Origin", "*")
+//   res.header('Access-Control-Allow-Methods',"Get,Post,Put,Delete, Patch")
+//   res.header('Access-Control-Allow-headers',"Content-Type")
+// }) 
+
 app.use(
   session({
     secret: "secret",
@@ -44,7 +51,7 @@ mongoose.connect(process.env.URL,
   .catch(err => console.log(err))
 
 app.use('/',auth)
-
+app.use('/' ,job )
 app.use('/', usersRouter);
 
 //app.use(express.static(path.join(__dirname, "public")));

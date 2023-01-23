@@ -14,6 +14,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ProfilComponent } from './views/profil/profil.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,13 +25,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HomeComponent,
     FooterComponent,
     ScrollToTopComponent,
-
-
-
-
-
+    ProfilComponent
   ],
   imports: [
+
     BrowserModule,
     AppRoutingModule,
     LayoutsModule,

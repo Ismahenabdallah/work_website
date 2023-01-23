@@ -23,7 +23,8 @@ export class LoginComponent {
 
           this.share.saveData(dataToken.token)
           this.share.verifStatus()
-          this.share.getName()
+          this.share.getProfile()
+
 
           this.r.navigate(["/"])
         },

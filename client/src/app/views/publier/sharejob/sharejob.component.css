@@ -1,0 +1,17 @@
+.form-group , label {
+  padding:0.5rem;
+}
+ input , textarea{
+  background-color:#F8f9fa;
+ }
+
+ .publish{
+  width:30vh;
+  height:30vh;
+  margin:2rem 0 0 2rem ;
+  padding:1rem;
+
+ }
+ .publish h2{
+  font-size:1rem;
+ }
