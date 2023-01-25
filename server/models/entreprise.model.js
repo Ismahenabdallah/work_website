@@ -1,16 +1,23 @@
 const mongoose = require("mongoose");
 const {ObjectId} =mongoose.Schema.Types;
 const entrepriseSchema = new mongoose.Schema({
-    nom_jobs:String,
-    nom_entreprise:String,
-    description:String,
-    categories:String,
+    
+    nom_entreprise:String, 
+    description:String, 
+    categories:{  
+      type: String, 
+      enum: ['Jeux vidéo', 'Systèmes embarqués','Cybersécurité',
+             'Mobile','Data science','DevOps','Front-end','Back-end',
+             'Full-stack'
+    ],
+    },
     data_share:{ 
-      type:Date,
+      type:Date, 
       default:Date.now
     },
     telephone:Number,
-    site_web:String,
+    specialite:String,
+   
    
     adresse:String,
     facebookLink:String,
@@ -20,8 +27,8 @@ const entrepriseSchema = new mongoose.Schema({
     applyinthisjobs:[{type:ObjectId,ref:"users"}],
     
     
-   
-    //followers : المتابعين لهذا العمل 
+    
+    
 
     
 

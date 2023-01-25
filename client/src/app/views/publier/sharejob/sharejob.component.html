@@ -1,13 +1,15 @@
 <div class=" ">
   <h1 class="p-4 mb-2 mt-2">Ajouter une entreprise</h1>
 
-  <form #f="ngForm">
+  <form #f="ngForm" (ngSubmit)="Add(f)">
     <div class="row">
       <div class="col-9 bg-white p-5">
         <div class="form-group">
           <label for="exampleFormControlInput1"
             >Nom de l'entreprise
-            <span class="badge badge-danger">*</span></label
+            <span class="badge badge-danger">*</span>
+
+            </label
           >
           <input
             type="text"
@@ -20,39 +22,56 @@
           />
         </div>
         <div class="form-group">
-          <label for="exampleFormControlInput1">Description</label>
-          <textarea
+          <label for="exampleFormControlInput1"
+            >spécialité
+            <span class="badge badge-danger">*</span>
+
+            </label
+          >
+          <input
             type="text"
             class="form-control"
             ngModel
-            #description="ngModel"
-            placeholder="description"
+            #specialite="ngModel"
+            placeholder="specialite"
             required
-            name="description"
-          ></textarea>
+            name="specialite"
+          />
         </div>
+
         <div class="form-group">
-          <label for="exampleFormControlInput1">categories</label>
-          <textarea
-            type="text"
-            class="form-control"
-            ngModel
-            #categories="ngModel"
-            placeholder="description"
-            required
-            name="description"
-          ></textarea>
+          <label for="exampleFormControlInput1">categories
+            <span class="badge badge-danger">*</span>
+          </label>
+          <select class="form-select" aria-label="Default select example"
+          ngModel
+          #categories="ngModel"
+          name="categories">
+
+            <option value="Jeux vidéo">Jeux vidéo</option>
+            <option value="Systèmes embarqués">Systèmes embarqués</option>
+            <option value="Cybersécurité">Cybersécurité</option>
+            <option value="Mobile">Mobile</option>
+            <option value="Data science">Data science</option>
+            <option value="DevOps">DevOps</option>
+            <option value="Front-end">Front-end</option>
+            <option value="Back-end">Back-end</option>
+            <option value="Full-stack">Full-stack</option>
+
+          </select>
+
         </div>
+
         <div class="form-group">
           <label for="exampleFormControlInput1"
-            >Content <span class="badge badge-danger">*</span></label
+            >Description </label
           >
           <angular-editor
             type="text"
             class="form-control"
-            name="Content"
+            name="description"
             ngModel
-            #Content="ngModel"
+            #description="ngModel"
             required
             [config]="editorConfig"
             [placeholder]="'Enter text here...'"
@@ -60,20 +79,11 @@
         </div>
         <div class="row">
           <div class="col-6">
+
             <div class="form-group">
-              <label for="exampleFormControlInput1">nom de travail</label>
-              <input
-                type="text"
-                class="form-control"
-                ngModel
-                #nom_jobs="ngModel"
-                placeholder="nom de travail"
-                required
-                name="nom_jobs"
-              />
-            </div>
-            <div class="form-group">
-              <label for="exampleFormControlInput1">telephone</label>
+              <label for="exampleFormControlInput1">telephone
+                <span class="badge badge-danger">*</span>
+              </label>
               <input
                 type="number"
                 class="form-control"
@@ -85,7 +95,9 @@
               />
             </div>
             <div class="form-group">
-              <label for="exampleFormControlInput1">adresse</label>
+              <label for="exampleFormControlInput1">adresse
+                <span class="badge badge-danger">*</span>
+              </label>
               <input
                 type="text"
                 class="form-control"
@@ -107,7 +119,7 @@
                 ngModel
                 #linkdInLink="ngModel"
                 placeholder="LinkdIn Profile URL"
-                required
+
                 name="linkdInLink"
               />
             </div>
@@ -120,7 +132,7 @@
                 ngModel
                 #facebookLink="ngModel"
                 placeholder="Facebook Profile URL"
-                required
+
                 name="facebookLink"
               />
             </div>
@@ -132,7 +144,7 @@
                 ngModel
                 #instagramLink="ngModel"
                 placeholder="Instagram  Profile URL"
-                required
+
                 name="instagramLink"
               />
             </div>

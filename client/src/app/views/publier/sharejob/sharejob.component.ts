@@ -1,12 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { HttpErrorResponse } from '@angular/common/http';
+import { Component } from '@angular/core';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
+import { ToastrService } from 'ngx-toastr';
+import { ServicesService } from 'src/app/services/services.service';
 
 @Component({
   selector: 'app-sharejob',
   templateUrl: './sharejob.component.html',
   styleUrls: ['./sharejob.component.css']
 })
-export class SharejobComponent implements OnInit {
+export class SharejobComponent  {
 
 editorConfig: AngularEditorConfig = {
   editable: true,
@@ -48,9 +51,28 @@ editorConfig: AngularEditorConfig = {
 
 };
 
-  constructor() { }
+  constructor( private s: ServicesService ,private t : ToastrService) {
 
-  ngOnInit() {
-  }
+   }
+   Add(f:any){
+    this.s.publier(f.value).subscribe({
+      next:(res:any)=>{
+
+        this.t.success(res.message)
+
+
+
+      },
+      error:(err:HttpErrorResponse)=>{
+        this.t.error(err.error.msg)
+        //console.log(err)
+      }
+
+
+    })
+
+   }
+
+
 
 }

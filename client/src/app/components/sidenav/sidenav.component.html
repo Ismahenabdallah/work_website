@@ -14,7 +14,7 @@
           </a>
         </li>
         <li class=" nav-item  dropdown" style="text-transform: none; display: flex;   " *ngIf="share.LoggedIn()==true">
-          <h3 class="name">{{img}}</h3>
+          <h3 class="name">{{email |slice:0:1}}</h3>
           <a class="dropbtn nav-link text-dark" style="text-transform: none !important ;  margin-left: 1rem !important; " >
 
             {{name}}-{{prenom}} </a>

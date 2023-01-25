@@ -3,7 +3,20 @@
 }
  input , textarea{
   background-color:#F8f9fa;
+  text-transform:none;
  }
+ ::placeholder{
+
+  text-transform: capitalize;
+ }
+ .badge {
+  color: red;
+  text-size:1rem;
+}
+
+/* *:required {
+  background-color: gold;
+} */
 
  .publish{
   width:30vh;

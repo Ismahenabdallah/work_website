@@ -16,6 +16,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProfilComponent } from './views/profil/profil.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,9 +26,11 @@ import { ProfilComponent } from './views/profil/profil.component';
     HomeComponent,
     FooterComponent,
     ScrollToTopComponent,
-    ProfilComponent
+    ProfilComponent,
+
   ],
   imports: [
+
 
     BrowserModule,
     AppRoutingModule,

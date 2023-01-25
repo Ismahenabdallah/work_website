@@ -13,9 +13,9 @@ export class NavbarComponent {
   windowScrolled: boolean=false;
   name=''
   prenom=''
-  img=""
+
   email=""
-  str = "Javatpoint";
+
   constructor(@Inject(DOCUMENT) private document: Document ,public share:AuthserviceService , private r :Router) {
 
    if(this.share.LoggedIn()){
@@ -23,7 +23,7 @@ export class NavbarComponent {
 
     this.prenom=this.share.getProfile().prenom
     this.email=this.share.getProfile().email
-    this.img=this.email.slice(0, 1)
+
    }
   }
 

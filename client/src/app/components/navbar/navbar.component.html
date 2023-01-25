@@ -76,7 +76,7 @@
           </li>
 
           <li class=" nav-item  dropdown" style="text-transform: none; display: flex;   " *ngIf="share.LoggedIn()==true">
-            <h3 class="name">{{img}}</h3>
+            <h3 class="name">{{email| slice: 0:1}}</h3>
             <a class="dropbtn nav-link" style="text-transform: none !important ;  margin-left: 1rem !important; " >
 
               {{name}}-{{prenom}}</a>
@@ -89,14 +89,14 @@
 
          <div class="d-flex display" *ngIf="share.LoggedIn()==false">
           <li class="nav-item">
-            <a class="nav-link active" routerLink="#">
+            <a class="nav-link active" routerLink="/login">
               <i class="fa fa-user" aria-hidden="true" style="color:gainsboro"></i>
 
               Se connecter</a
             >
           </li>
           <li class="nav-item">
-            <a class="nav-link active" routerLink="#">
+            <a class="nav-link active" routerLink="/register">
               <i class="fa fa-lock" aria-hidden="true" style="color:gainsboro "></i>
               s'inscrire
             </a>

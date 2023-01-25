@@ -25,5 +25,16 @@ export class ServicesService {
     return this.http.get(`${this.url}/getprofil`, {headers:this.header});
 
   }
+  publier(data:any){
+    return this.http.post(`${this.url}/pub`,data, {headers:this.header});
+  }
+  getJobs(){
+    return  this.http.get(`${this.url}/getalljobs` )
+
+  }
+  applyJobs(id:any){
+    return  this.http.put(`${this.url}/apply`,{followId:id},{headers:this.header} )
+
+  }
 
 }

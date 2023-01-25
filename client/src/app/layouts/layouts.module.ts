@@ -10,12 +10,14 @@ import { SidenavComponent } from '../components/sidenav/sidenav.component';
 
 
 
+
+
 @NgModule({
   declarations: [
     RechercheComponent,
     PuplierComponent,
     SidenavComponent,
-    BodyComponent
+    BodyComponent,
 
 
   ],

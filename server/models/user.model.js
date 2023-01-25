@@ -16,7 +16,7 @@ const userSchema = new mongoose.Schema({
   confirm: String,
   cv: String,
   numbre_apply: [{ type: ObjectId, ref: "entreprises" }],
-  //تعطيني فاش شاركت 
+  //تعطيني فاش شاركت  
 
 
 
