@@ -8,12 +8,13 @@ import { DataTablesModule } from 'angular-datatables';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SearchPipe } from 'src/app/components/search.pipe';
+import { SharedMessengerModule } from 'src/app/shared-messenger/shared-messenger.module';
 
 
 
 
 @NgModule({
-  declarations: [CategoriesComponent, SearchPipe
+  declarations: [CategoriesComponent
   ],
   imports: [
     CommonModule,
@@ -23,9 +24,11 @@ import { SearchPipe } from 'src/app/components/search.pipe';
     Ng2SearchPipeModule,
     FormsModule,
     ReactiveFormsModule,
+    SharedMessengerModule ///for pipe
 
 
 
-  ]
+  ],
+
 })
 export class CategoriesModule { }

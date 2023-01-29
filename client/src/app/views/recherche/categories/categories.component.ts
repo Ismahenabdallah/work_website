@@ -10,7 +10,7 @@ import { ServicesService } from 'src/app/services/services.service';
 @Component({
   selector: 'app-categories',
   templateUrl: './categories.component.html',
-  styleUrls: ['./categories.component.css']
+  styleUrls: ['./categories.component.css'],
 })
 export class CategoriesComponent implements OnDestroy {
   /***
@@ -51,14 +51,15 @@ export class CategoriesComponent implements OnDestroy {
 </div> -->
    */
   POSTS: any;
+  disable = false;
   page: number = 0;
   count: number = 0;
-  jobs: any = []
+  jobs: any = [];
   tableSize: number = 5;
   tableSizes: any = [3, 6, 9, 12];
+  users: any = [];
 
-
-  Jeux_video= 0;
+  Jeux_video = 0;
   Systemes_embarques: number = 0;
   Cybersecurite: number = 0;
   Mobile: number = 0;
@@ -67,139 +68,124 @@ export class CategoriesComponent implements OnDestroy {
   Front_end: number = 0;
   Back_end: number = 0;
   Full_stack: number = 0;
-  dtOption:DataTables.Settings={};
-  getJ: Subscription = new Subscription;
-  term:any
-  f:any
-  filtertable:any
-  filterTerm:any
-filteredCars:any=[]
-  constructor(private t:ToastrService ,private share: AuthserviceService,private r:Router, private s: ServicesService) {
+  dtOption: DataTables.Settings = {};
+  getJ: Subscription = new Subscription();
+  getall: Subscription = new Subscription();
+  term: any;
+  f: any;
+  filtertable: any;
+  filterTerm: any;
+  filteredCars: any = [];
 
-
+  constructor(
+    private t: ToastrService,
+    public share: AuthserviceService,
+    private r: Router,
+    private s: ServicesService
+  ) {
+    //console.log(this.share.getProfile());
     if (this.share.LoggedIn()) {
       this.share.getProfile();
     }
+    this.getall = this.s.getAllusers().subscribe((data) => {
+      //console.log('users', data);
+      this.users = data;
+    });
 
-      this.fetchJobs();
+    this.fetchJobs();
 
 
   }
-//   searchtabs = () => {
-//    this.jobs.filter((item:any) => {
-//       return JSON.stringify(item).toLowerCase().includes(this.term);
-//   })
 
-// }
-apply(id:any){
-  if (this.share.LoggedIn()) {
+  apply(id: any) {
+    if (this.share.LoggedIn()) {
+      this.s.applyJobs(id).subscribe({
+        next: (res: any) => {
+          ///console.log(res);
+          this.t.success(res.message);
 
-   this.s.applyJobs(id).subscribe({
-    next:(res:any)=>{
-      console.log(res)
-      this.t.success(res.message)
 
-    },
-    error:(err:HttpErrorResponse)=>{
-      console.log(err)
-      this.t.error(err.error.message)
+
+
+
+        },
+        error: (err: HttpErrorResponse) => {
+          ///console.log(err);
+          this.t.error(err.error.message);
+        },
+      });
+    } else {
+      this.r.navigate(['/login']);
     }
-   })
-
-
-  }
-  else{
-    this.r.navigate(['/login'])
   }
 
-}
+  fetchJobs(): void {
+    this.getJ = this.s.getJobs().subscribe((data: any) => {
+      //const found = data.find((element:any) => element.categories == 'Mobile');
+      //const found = data.findIndex((element:any) => element.categories == 'Mobile');
+      //console.log('found', found)
 
-fetchJobs(): void {
-  this.getJ=this.s.getJobs().subscribe((data: any) => {
-
-    //const found = data.find((element:any) => element.categories == 'Mobile');
-    //const found = data.findIndex((element:any) => element.categories == 'Mobile');
-    //console.log('found', found)
-
-
-    this.jobs = data;
-    data.forEach((element: any) => {
-      if (element.categories == "Mobile") {
-
-        this.Mobile = this.Mobile + 1;
-      }
-      if (element.categories == "Full-stack") {
-
-        this.Full_stack = this.Full_stack + 1;
-      }
-      if (element.categories == "Jeux vidéo") {
-
-        this.Jeux_video = this.Jeux_video + 1;
-      }
-      if (element.categories == "Cybersécurité") {
-
-        this.Cybersecurite = this.Cybersecurite + 1;
-      }
-      if (element.categories == "Systèmes embarqués") {
-
-        this.Systemes_embarques= this.Systemes_embarques + 1;
-      }
-      if (element.categories == "Data science") {
-
-        this.Data_science = this.Data_science + 1;
-      }
-      if (element.categories == "Front-end") {
-
-        this.Front_end = this.Front_end + 1;
-      }
-      if (element.categories == "DevOps") {
-
-        this.DevOps = this.DevOps + 1;
-      }
-      if (element.categories == "Back-end") {
-
-        this.Back_end = this.Back_end + 1;
-      }
+      this.jobs = data;
+      data.forEach((element: any) => {
 
 
 
 
+        if (element.categories == 'Mobile') {
+          this.Mobile = this.Mobile + 1;
+        }
+        if (element.categories == 'Full-stack') {
+          this.Full_stack = this.Full_stack + 1;
+        }
+        if (element.categories == 'Jeux vidéo') {
+          this.Jeux_video = this.Jeux_video + 1;
+        }
+        if (element.categories == 'Cybersécurité') {
+          this.Cybersecurite = this.Cybersecurite + 1;
+        }
+        if (element.categories == 'Systèmes embarqués') {
+          this.Systemes_embarques = this.Systemes_embarques + 1;
+        }
+        if (element.categories == 'Data science') {
+          this.Data_science = this.Data_science + 1;
+        }
+        if (element.categories == 'Front-end') {
+          this.Front_end = this.Front_end + 1;
+        }
+        if (element.categories == 'DevOps') {
+          this.DevOps = this.DevOps + 1;
+        }
+        if (element.categories == 'Back-end') {
+          this.Back_end = this.Back_end + 1;
+        }
+      });
 
 
 
     });
-
+  }
+  onTableDataChange(event: any) {
+    this.page = event;
+    this.fetchJobs();
+  }
+  onTableSizeChange(event: any): void {
+    this.tableSize = event.target.value;
+    this.page = 1;
+    this.fetchJobs();
   }
 
-
-  )
-}
-onTableDataChange(event: any) {
-  this.page = event;
-  this.fetchJobs();
-}
-onTableSizeChange(event: any): void {
-  this.tableSize = event.target.value;
-  this.page = 1;
-  this.fetchJobs();
-}
-
-filter(){
-  if(this.filterTerm){
-    this.filteredCars = this.jobs.filter(
-      (car:any) =>{
-        return JSON.stringify(car).toLowerCase().includes(this.filterTerm.toLowerCase());
-      })
-  } else {
-    this.filteredCars = this.jobs
+  filter() {
+    if (this.filterTerm) {
+      this.filteredCars = this.jobs.filter((car: any) => {
+        return JSON.stringify(car)
+          .toLowerCase()
+          .includes(this.filterTerm.toLowerCase());
+      });
+    } else {
+      this.filteredCars = this.jobs;
+    }
   }
-}
   ngOnDestroy(): void {
     this.getJ.unsubscribe();
   }
-
-
-
-
-
 }

@@ -1,121 +1,267 @@
-<div class="container">
+<div class="container mb-5 ">
   <div class="row justify-content-center" *ngFor="let user of users">
-
-
-
-
-       <div class="col-md-7 col-lg-4 mb-5 mb-lg-0 wow fadeIn" *ngIf="user._id=== profil._id">
-          <div class="card border-0 shadow">
-
-
-              <div class="card-body p-1-9 p-xl-5">
-
-                <h4 class="name">{{user.email|slice:0:1}}</h4>
-                  <div class="mb-4">
-                      <h3 class="h4 mb-0">{{user.nom}}</h3>
-                      <span class="text-primary">CEO &amp; Founder</span>
-                  </div>
-                   <ul class="list-unstyled mb-4">
-                      <li class="mb-3"><a href="#!"><i class="far fa-envelope display-25 me-3 text-secondary"></i>{{user.email}}</a></li>
-                      <li class="mb-3"><a href="#!"><i class="fas fa-mobile-alt display-25 me-3 text-secondary"></i>{{user.telephone}}</a></li>
-                      <li><a href="#!"><i class="fas fa-map-marker-alt display-25 me-3 text-secondary"></i>{{user.adresse}}</a></li>
-                  </ul>
-                  <ul class="social-icon-style2 ps-0">
-                      <li><a href="#!" class="rounded-3"><i class="fab fa-facebook-f"></i></a></li>
-                      <li><a href="#!" class="rounded-3"><i class="fab fa-twitter"></i></a></li>
-                      <li><a href="#!" class="rounded-3"><i class="fab fa-github"></i></a></li>
-                      <li><a href="#!" class="rounded-3"><i class="fab fa-linkedin-in"></i></a></li>
-                  </ul>
-              </div>
-              <div >
-
-
-              </div>
+    <div
+      class="col-md-7 col-lg-4 mb-5 mb-lg-0 wow fadeIn"
+      *ngIf="user._id === profil._id"
+    >
+      <div class="card border-0 shadow">
+        <div class="card-body p-1-9 p-xl-5">
+          <h4 class="name">{{ user.email | slice : 0 : 1 }}</h4>
+          <div class="mb-4">
+            <h3 class="h4 mb-0">{{ user.nom }}</h3>
+            <span class="text-primary">CEO &amp; Founder</span>
           </div>
+          <ul class="list-unstyled mb-4">
+            <li class="mb-3">
+              <a href="#!"
+                ><i class="far fa-envelope display-25 me-3 text-secondary"></i
+                >{{ user.email }}</a
+              >
+            </li>
+            <li class="mb-3">
+              <a href="#!"
+                ><i class="fas fa-mobile-alt display-25 me-3 text-secondary"></i
+                >{{ user.telephone }}</a
+              >
+            </li>
+            <li>
+              <a href="#!"
+                ><i
+                  class="fas fa-map-marker-alt display-25 me-3 text-secondary"
+                ></i
+                >{{ user.adresse }}</a
+              >
+            </li>
+          </ul>
+          <ul class="social-icon-style2 ps-0">
+            <li>
+              <a href="#!" class="rounded-3"
+                ><i class="fab fa-facebook-f"></i
+              ></a>
+            </li>
+            <li>
+              <a href="#!" class="rounded-3"><i class="fab fa-twitter"></i></a>
+            </li>
+            <li>
+              <a href="#!" class="rounded-3"><i class="fab fa-github"></i></a>
+            </li>
+            <li>
+              <a href="#!" class="rounded-3"
+                ><i class="fab fa-linkedin-in"></i
+              ></a>
+            </li>
+          </ul>
+        </div>
+        <div></div>
       </div>
-      <div class="col-lg-8" *ngIf="user._id=== profil._id">
-          <div class="ps-lg-1-6 ps-xl-5">
-            <button  style="width: 4rem;" class="text-end" (click)="getprofil()" type="button"  data-bs-toggle="modal" data-bs-target="#exampleModal">
-              <i    class="fa fa-edit   " style="font-size: 2rem; color: green;" aria-hidden="true"></i>
-                                </button>
-              <div class="mb-5 wow fadeIn">
-                  <div class="text-start mb-1-6 wow fadeIn">
-
-                      <h2 class="h1 mb-0 text-primary">#About Me </h2>
-
-                  </div>
-                  <p>{{user.objectif}}</p>
-                  <p class="mb-0">{{user.cv}}</p>
-              </div>
-
+    </div>
+    <div class="col-lg-8 mb-5" *ngIf="user._id === profil._id">
+      <div class="ps-lg-1-6 ps-xl-5">
+        <button
+          style="width: 4rem"
+          class="text-end"
+          (click)="getprofil()"
+          type="button"
+          data-bs-toggle="modal"
+          data-bs-target="#exampleModal"
+        >
+          <i
+            class="fa fa-edit"
+            style="font-size: 2rem; color: green"
+            aria-hidden="true"
+          ></i>
+        </button>
+        <div class="mb-5 wow fadeIn">
+          <div class="text-start mb-1-6 wow fadeIn">
+            <h2 class="h1 mb-0 text-primary">#About Me</h2>
           </div>
+          <p>{{ user.objectif }}</p>
+          <p class="mb-5">{{ user.cv }}</p>
+
+          <div class="mb-5 " >
+            <div>
+              <h5 class="text-center mt-5 mb-5">tous les jobs disponible</h5>
+            </div>
+            <div>
+              <div class="input-group mb-3" style="width: 50vh">
+                <input
+                  type="text"
+                  class="form-control"
+                  [(ngModel)]="term"
+                  placeholder="Search"
+                  aria-label="Search"
+                  aria-describedby="basic-addon2"
+                />
+              </div>
+              <!-- <input type="text"
+                    placeholder="Type to search"
+                    [(ngModel)]="filterTerm"
+                    (ngModelChange)="filter()"> -->
+            </div>
+
+
+            <table class="table row-border hover mb-5" >
+              <thead>
+                <tr>
+                  <th>nom entreprise</th>
+                  <th>specialite</th>
+                  <th>categories</th>
+                  <th>adresse</th>
+                  <th>date</th>
+                </tr>
+              </thead>
+              <tbody  *ngFor="let item of user.numbre_apply">
+
+                <tr
+                *ngFor="
+                  let post of jobs
+                    |search : term |paginate
+                           : {
+                          itemsPerPage: tableSize,
+                          currentPage: page,
+                          totalItems: count
+                        };
+                  let i = index
+                "
+              >
+                <th *ngIf="item ==post._id" scope="row">{{ post.nom_entreprise }}</th>
+                <td *ngIf="item ==post._id">{{ post.specialite }}</td>
+                <td *ngIf="item ==post._id">{{ post.categories }}</td>
+                <td *ngIf="item ==post._id">{{ post.adresse }}</td>
+                <td *ngIf="item ==post._id">{{ post.data_share | date : "short" }}</td>
+              </tr>
+
+              </tbody>
+            </table>
+            <div class="d-flex justify-content-center">
+              <pagination-controls
+                previousLabel="Prev"
+                nextLabel="Next"
+                (pageChange)="onTableDataChange($event)"
+              >
+              </pagination-controls>
+            </div>
+          </div>
+        </div>
       </div>
+    </div>
   </div>
 </div>
 <!-- update Model-->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true"
+>
   <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalCenterTitle">Update User</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
         <form #form="ngForm" (ngSubmit)="update(form)">
-
-
-
-
           <!-- <div class=" alert alert-danger" *ngIf="(email.errors?.['required'] && email.touched)" >
             remplir formulaire </div> -->
 
+          <div class="form-group">
+            <label for="exampleFormControlInput1">nom</label>
+            <input
+              type="text"
+              class="form-control"
+              ngModel
+              #nom="ngModel"
+              [(ngModel)]="profil.nom"
+              placeholder="nom"
+              required
+              name="nom"
+              ngModel
+            />
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlInput1">prenom</label>
+            <input
+              type="text"
+              class="form-control"
+              ngModel
+              #prenom="ngModel"
+              [(ngModel)]="profil.prenom"
+              placeholder="prenom"
+              required
+              name="prenom"
+              ngModel
+            />
+          </div>
 
+          <div class="form-group">
+            <label for="exampleFormControlInput1">adresse</label>
+            <input
+              type="text"
+              class="form-control"
+              ngModel
+              [(ngModel)]="profil.adresse"
+              #adresse="ngModel"
+              placeholder="adresse"
+              required
+              name="adresse"
+              ngModel
+            />
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlInput1">telephone</label>
+            <input
+              type="text"
+              class="form-control"
+              ngModel
+              #telephone="ngModel"
+              [(ngModel)]="profil.telephone"
+              placeholder="telephone"
+              required
+              name="telephone"
+              ngModel
+            />
+          </div>
 
-
-
-
-            <div class="form-group">
-              <label for="exampleFormControlInput1">nom</label>
-              <input type="text" class="form-control"  ngModel #nom="ngModel"  [(ngModel)]="profil.nom"  placeholder="nom" required name="nom"  ngModel>
-            </div>
-            <div class="form-group">
-              <label for="exampleFormControlInput1">prenom</label>
-              <input type="text" class="form-control"  ngModel #prenom="ngModel" [(ngModel)]="profil.prenom" placeholder="prenom" required name="prenom"  ngModel>
-            </div>
-
-            <div class="form-group">
-              <label for="exampleFormControlInput1">adresse</label>
-              <input type="text"  class="form-control"ngModel [(ngModel)]="profil.adresse" #adresse="ngModel"  placeholder="adresse" required name="adresse"  ngModel>
-            </div>
-            <div class="form-group">
-              <label for="exampleFormControlInput1">telephone</label>
-              <input type="text" class="form-control"  ngModel #telephone="ngModel" [(ngModel)]="profil.telephone" placeholder="telephone" required name="telephone"  ngModel>
-            </div>
-
-            <div class="form-group">
-              <label for="exampleFormControlInput1">objectif</label>
-             <textarea  type="text" class="form-control"  ngModel #objectif="ngModel" [(ngModel)]="profil.objectif" placeholder="objectif" required name="objectif"  ngModel>
-
-             </textarea>
-
-            </div>
-            <!-- <div class="alert alert-danger" *ngIf="messageError">
+          <div class="form-group">
+            <label for="exampleFormControlInput1">objectif</label>
+            <textarea
+              type="text"
+              class="form-control"
+              ngModel
+              #objectif="ngModel"
+              [(ngModel)]="profil.objectif"
+              placeholder="objectif"
+              required
+              name="objectif"
+              ngModel
+            >
+            </textarea>
+          </div>
+          <!-- <div class="alert alert-danger" *ngIf="messageError">
               {{messageError}}
             </div> -->
 
-         <button class="btn btn-primary" (click)="update(profil._id)" >update User</button>
+          <button class="btn btn-primary" (click)="update(profil._id)">
+            update User
+          </button>
         </form>
-
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-           </div>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+          Close
+        </button>
+      </div>
     </div>
   </div>
 </div>
 <!--end update Model -->
-
-
-

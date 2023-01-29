@@ -3,15 +3,21 @@ const asynHandler = require('express-async-handler');
 const User = require("../models/user.model.js");
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcryptjs');
+const cloudinary = require('cloudinary').v2;
 require('dotenv').config()
 function validateEmail(email) {
     const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(email);
 }
+cloudinary.config({
+    cloud_name: "dryq7pswe",
+    api_key: "946912488497116",
+    api_secret: "o0GM1XY0M973vN4sVkdQ8a9zSCE"
+  });
 const Register = asynHandler(async (req, res) => {
     try {
-        const { email, mot_de_passe, confirm , nom, prenom } = req.body
-        if (!email || !mot_de_passe || !confirm ,  !nom, !prenom )
+        const { email, mot_de_passe, confirm , nom, prenom} = req.body
+        if (!email || !mot_de_passe || !confirm ,  !nom, !prenom  )
             return res.status(400).json({ msg: "Please fill in all fields." })
         if (!validateEmail(email))
             return res.status(400).json({ msg: "Invalid emails." })
@@ -20,9 +26,13 @@ const Register = asynHandler(async (req, res) => {
         const user = await User.findOne({ email })
         if (user)
             return res.status(400).json({ msg: "email already exist. " })
-        const passwordHash = bcrypt.hashSync(mot_de_passe, 12)
+        //const file=req.files.image;
+////const upload = cloudinary.uploader.upload(file.tempFilePath)
+
+            const passwordHash = bcrypt.hashSync(mot_de_passe, 12)
         const newUser = new User({
-            ...req.body, mot_de_passe: passwordHash, confirm: passwordHash
+            ...req.body
+            , mot_de_passe: passwordHash, confirm: passwordHash
         })
         //jwt.sign(email, process.env.PRIVATE_KEY, { expiresIn: '15m' })
 
@@ -63,7 +73,8 @@ const Login = asynHandler(async (req, res) => {
                         telephone:user.telephone,
                         objectif:user.objectif,
                         cv:user.cv,
-                        adresse:user.adresse
+                        adresse:user.adresse,
+                        numbre_apply:user.numbre_apply
                         
                        
                        }, process.env.PRIVATE_KEY,  { expiresIn: '1h' });

@@ -10,6 +10,9 @@
 
 
 }
+/* .file-input {
+  display: none;
+} */
 input{
   text-transform: none !important;
 }

@@ -13,7 +13,8 @@ dotenv.config()
 var usersRouter = require('./routes/user.route');
 var auth = require('./routes/auth.router')
 var job=require('./routes/job.router')
-var mongoose = require('mongoose')
+var mongoose = require('mongoose');
+const fileUpload = require('express-fileupload');
 var app = express();
 //app.set('veiw engine', 'ejs')
 mongoose.set('strictQuery', true);
@@ -32,13 +33,18 @@ app.use(
     saveUninitialized: false,
   })
 );
-app.use(logger("dev"));
-app.use(express.json({limit:"50mb", extended: false}));
-app.use(express.urlencoded({limit:"50mb", extended: false }));
+app.use(logger("dev")); 
+app.use(express.json({limit:"50mb"}));
+app.use(express.urlencoded({limit:"50mb", extended:true}));
 app.use(bodyParser.json({limit: "50mb", extended: false }));
 app.use(bodyParser.urlencoded({ limit: "50mb", extended:false }));
 app.use(cookieParser());
 
+
+
+app.use(fileUpload({
+  useTempFiles: true
+}))
 mongoose.connect(process.env.URL,
   {
      

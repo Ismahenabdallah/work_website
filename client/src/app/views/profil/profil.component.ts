@@ -1,4 +1,4 @@
-import { HttpErrorResponse } from '@angular/common/http';
+
 import { Component } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
@@ -27,6 +27,21 @@ export class ProfilComponent {
   };
   getall: Subscription | undefined;
   users: any = [];
+  POSTS: any;
+  page: number = 0;
+  count: number = 0;
+  jobs: any = []
+  tableSize: number = 3;
+  tableSizes: any = [3, 6, 9, 12];
+
+
+
+  getJ: Subscription = new Subscription;
+  term:any
+
+  filtertable:any
+  filterTerm:any
+filteredCars:any=[]
   constructor(
     private toastr: ToastrService,
     private share: AuthserviceService,
@@ -36,14 +51,15 @@ export class ProfilComponent {
       this.share.getProfile();
       this.profil = this.share.getProfile();
       this.getall = this.s.getAllusers().subscribe((data) => {
-        console.log('users', data);
+        //console.log('users', data);
         this.users = data;
         this.img = this.profil.email.slice(0, 1);
       });
 
 
-      // console.log(this.profil)
+
     }
+    this.fetchJobs();
   }
   update(form: any) {
     let data = form.value;
@@ -74,5 +90,88 @@ export class ProfilComponent {
       console.log('get', res);
       ///this.profil = res;
     });
+  }
+
+
+
+  fetchJobs(): void {
+    this.getJ=this.s.getJobs().subscribe((data: any) => {
+
+      //const found = data.find((element:any) => element.categories == 'Mobile');
+      //const found = data.findIndex((element:any) => element.categories == 'Mobile');
+      //console.log('found', found)
+
+
+      this.jobs = data;
+      // data.forEach((element: any) => {
+      //   if (element.categories == "Mobile") {
+
+      //     this.Mobile = this.Mobile + 1;
+      //   }
+      //   if (element.categories == "Full-stack") {
+
+      //     this.Full_stack = this.Full_stack + 1;
+      //   }
+      //   if (element.categories == "Jeux vidéo") {
+
+      //     this.Jeux_video = this.Jeux_video + 1;
+      //   }
+      //   if (element.categories == "Cybersécurité") {
+
+      //     this.Cybersecurite = this.Cybersecurite + 1;
+      //   }
+      //   if (element.categories == "Systèmes embarqués") {
+
+      //     this.Systemes_embarques= this.Systemes_embarques + 1;
+      //   }
+      //   if (element.categories == "Data science") {
+
+      //     this.Data_science = this.Data_science + 1;
+      //   }
+      //   if (element.categories == "Front-end") {
+
+      //     this.Front_end = this.Front_end + 1;
+      //   }
+      //   if (element.categories == "DevOps") {
+
+      //     this.DevOps = this.DevOps + 1;
+      //   }
+      //   if (element.categories == "Back-end") {
+
+      //     this.Back_end = this.Back_end + 1;
+      //   }
+
+
+
+
+
+
+
+      // });
+
+    }
+
+
+    )
+  }
+  onTableDataChange(event: any) {
+    this.page = event;
+    this.fetchJobs();
+  }
+  onTableSizeChange(event: any): void {
+    this.tableSize = event.target.value;
+    this.page = 1;
+    this.fetchJobs();
+  }
+
+  filter(){
+    if(this.filterTerm){
+      this.filteredCars = this.jobs.filter(
+        (car:any) =>{
+          return JSON.stringify(car).toLowerCase().includes(this.filterTerm.toLowerCase());
+        })
+    } else {
+      this.filteredCars = this.jobs
+    }
   }
 }

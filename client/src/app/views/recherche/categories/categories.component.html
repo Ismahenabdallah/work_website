@@ -1,79 +1,98 @@
-<div class="row" >
-  <div class="" style="text-align: center; margin-bottom: 5rem;">
+<div class="row">
+  <div class="" style="text-align: center; margin-bottom: 5rem">
     <button class="btn btn-warning">Offres d'emploi</button>
     <h3>Parcourir les emplois par catégories</h3>
     <p>
-      Sur Workeep, vous pouvez trouver des offres d'emploi en informatique en Tunisie dans plusieurs spécialités. Trouvez le poste qui correspond à vos compétences et votre expérience sur notre plateforme de recrutement en ligne.
+      Sur notre plateforme vous pouvez trouver des offres d'emploi en
+      informatique en Tunisie dans plusieurs spécialités. Trouvez le poste qui
+      correspond à vos compétences et votre expérience sur notre plateforme de
+      recrutement en ligne.
     </p>
-
   </div>
   <div>
-    <div class="container "  style=" margin-bottom: 5rem;">
+    <div class="container" style="margin-bottom: 5rem">
       <div class="c1">
-        <div class="bg-whit"><h5>Jeux vidéo</h5>
-                  <h5 class="skill" >{{Jeux_video}}</h5>
+        <div class="bg-whit">
+          <h5>Jeux vidéo</h5>
+          <h5 class="skill">{{ Jeux_video }}</h5>
         </div>
-        <div class="bg-whit"><h5>Systèmes embarqués</h5>
-          <h5 class="skill">{{Systemes_embarques}}</h5>
+        <div class="bg-whit">
+          <h5>Systèmes embarqués</h5>
+          <h5 class="skill">{{ Systemes_embarques }}</h5>
         </div>
-        <div class="bg-whit"><h5>Cybersécurité</h5>
-        <h5 class="skill">{{Cybersecurite}}</h5>
+        <div class="bg-whit">
+          <h5>Cybersécurité</h5>
+          <h5 class="skill">{{ Cybersecurite }}</h5>
         </div>
       </div>
-      <div class="c1" >
-        <div class="bg-whit"><h5>Mobile</h5>
-        <h5 class="skill">{{Mobile}}</h5></div>
-        <div class="bg-whit"><h5>Data science</h5>
-          <h5 class="skill">{{ Data_science }}</h5></div>
-        <div class="bg-whit"><h5>DevOps</h5>
+      <div class="c1">
+        <div class="bg-whit">
+          <h5>Mobile</h5>
+          <h5 class="skill">{{ Mobile }}</h5>
+        </div>
+        <div class="bg-whit">
+          <h5>Data science</h5>
+          <h5 class="skill">{{ Data_science }}</h5>
+        </div>
+        <div class="bg-whit">
+          <h5>DevOps</h5>
           <h5 class="skill">{{ DevOps }}</h5>
         </div>
       </div>
       <div class="c1">
-        <div class="bg-whit"><h5>Front-end</h5><h5 class="skill" >{{Front_end}}</h5></div>
-        <div class="bg-whit"><h5>Back-end</h5><h5 class="skill">{{Back_end}}</h5></div>
-        <div class="bg-whit"><h5>Full-stack</h5><h5 class="skill">{{Full_stack}}</h5></div>
+        <div class="bg-whit">
+          <h5>Front-end</h5>
+          <h5 class="skill">{{ Front_end }}</h5>
+        </div>
+        <div class="bg-whit">
+          <h5>Back-end</h5>
+          <h5 class="skill">{{ Back_end }}</h5>
+        </div>
+        <div class="bg-whit">
+          <h5>Full-stack</h5>
+          <h5 class="skill">{{ Full_stack }}</h5>
+        </div>
       </div>
-
-
-
     </div>
   </div>
 </div>
 
-  <div class=" ">
-    <div>
-      <h5 class="text-center  mt-5 mb-5" >tous les jobs disponible</h5>
-    </div>
-    <div>
-      <div class="input-group  mb-3" style="width: 50vh;">
-        <input type="text" class="form-control" [(ngModel)]="term"  placeholder="Search" aria-label="Search"
-            aria-describedby="basic-addon2">
-
+<div class=" ">
+  <div>
+    <h5 class="text-center mt-5 mb-5">tous les jobs disponible</h5>
+  </div>
+  <div>
+    <div class="input-group mb-3" style="width: 50vh">
+      <input
+        type="text"
+        class="form-control"
+        [(ngModel)]="term"
+        placeholder="Search"
+        aria-label="Search"
+        aria-describedby="basic-addon2"
+      />
     </div>
     <!-- <input type="text"
     placeholder="Type to search"
     [(ngModel)]="filterTerm"
     (ngModelChange)="filter()"> -->
+  </div>
+  <!-- datatable [dtOptions]="dtOption" -->
 
-    </div>
-    <!-- datatable [dtOptions]="dtOption" -->
-
-    <table   class="table  row-border hover" >
-      <thead>
-        <tr>
-
-          <th>nom entreprise </th>
-          <th> specialite</th>
-          <th>categories</th>
-          <th>adresse</th>
- <th>date</th>
-          <th>action</th>
-        </tr>
-      </thead>
-      <tbody>
-        <!-- |filter:term -->
-        <!-- <tr
+  <table class="table row-border hover">
+    <thead>
+      <tr>
+        <th>nom entreprise</th>
+        <th>specialite</th>
+        <th>categories</th>
+        <th>adresse</th>
+        <th>date</th>
+        <th>action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- |filter:term -->
+      <!-- <tr
         *ngFor="
           let post of filteredCars | search:term
             | paginate
@@ -85,38 +104,44 @@
           let i = index
         "
       > -->
-        <tr
-          *ngFor="
-            let post of jobs | search:term
-              | paginate
-                : {
-                    itemsPerPage: tableSize,
-                    currentPage: page,
-                    totalItems: count
-                  };
-            let i = index
-          "
-        >
-
-          <th scope="row">{{ post.nom_entreprise }}</th>
-          <td>{{post.specialite}}</td>
-          <td>{{ post.categories }}</td>
-
-          <td>{{post.adresse}}</td>
-          <td>{{post.data_share |date:'short'}}</td>
-
-          <td><button class="btn btn-success" (click)="apply(post._id)"> apply</button></td>
-
-        </tr>
-      </tbody>
-    </table>
-    <div class="d-flex justify-content-center">
-      <pagination-controls
-        previousLabel="Prev"
-        nextLabel="Next"
-        (pageChange)="onTableDataChange($event)"
+      <tr
+        *ngFor="
+          let post of jobs
+            | search : term
+            | paginate
+              : {
+                  itemsPerPage: tableSize,
+                  currentPage: page,
+                  totalItems: count
+                };
+          let i = index
+        "
       >
-      </pagination-controls>
-    </div>
+        <th scope="row">{{ post.nom_entreprise }}</th>
+        <td>{{ post.specialite }}</td>
+        <td>{{ post.categories }}</td>
 
+        <td>{{ post.adresse }}</td>
+        <td>{{ post.data_share | date : "short" }}</td>
+
+        <td>
+          <button
+            class="btn btn-success"
+            [ngClass]="{ disablebutton: disable }"
+            (click)="apply(post._id)"
+          >
+            apply
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="d-flex justify-content-center">
+    <pagination-controls
+      previousLabel="Prev"
+      nextLabel="Next"
+      (pageChange)="onTableDataChange($event)"
+    >
+    </pagination-controls>
   </div>
+</div>

@@ -15,10 +15,14 @@ import { RouterModule } from '@angular/router';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProfilComponent } from './views/profil/profil.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { SharedMessengerModule } from './shared-messenger/shared-messenger.module';
+
 
 
 @NgModule({
   declarations: [
+
     AppComponent,
     NavbarComponent,
     LoginComponent,
@@ -29,8 +33,9 @@ import { ProfilComponent } from './views/profil/profil.component';
     ProfilComponent,
 
   ],
-  imports: [
 
+  imports: [
+    NgxPaginationModule,
 
     BrowserModule,
     AppRoutingModule,
@@ -41,6 +46,7 @@ import { ProfilComponent } from './views/profil/profil.component';
     RouterModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
+    SharedMessengerModule // for pipe
   ],
   providers: [],
   bootstrap: [AppComponent]

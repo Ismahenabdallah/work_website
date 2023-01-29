@@ -74,3 +74,7 @@ p{
 .pagination-2{
   background-color:#f8f9fc;
 } */
+
+.disablebutton{
+  background-color:red !important;
+}

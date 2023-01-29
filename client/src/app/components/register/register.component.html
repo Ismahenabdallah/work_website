@@ -20,7 +20,7 @@
                   <h2 style="  color: white">Bienvenus</h2>
                   <p style=" font-size: larger; color: white">Inscrivez-vous pour accéder à toutes les fonctionnalités</p>
                 </div>
-                <form #f="ngForm" (ngSubmit)="register(f)">
+                <form #f="ngForm" (ngSubmit)="register(f)" enctype="multipart/form-data">
                   <div class="form-group">
 
                   <label for="Prénom">Prénom</label>
@@ -35,6 +35,9 @@
                       ngModel
                     />
                   </div>
+
+
+
 
 
                   <div class="form-group">
